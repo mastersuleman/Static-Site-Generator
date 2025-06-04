@@ -1,0 +1,24 @@
+import os
+from file_utils import copy_recursive, clear_directory
+from page_generator import generate_page, generate_pages_recursive
+
+def main():
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # two levels up to root
+    
+    static_dir = os.path.join(BASE_DIR, "static")
+    public_dir = os.path.join(BASE_DIR, "public")
+    content_md = os.path.join(BASE_DIR, "content", "index.md")
+    template_html = os.path.join(BASE_DIR, "template.html")
+    output_html = os.path.join(public_dir, "index.html")
+    
+    print(f"Cleaning public directory: {public_dir}")
+    clear_directory(public_dir)
+    
+    print(f"Copying static files from {static_dir} to {public_dir}")
+    copy_recursive(static_dir, public_dir)
+    
+    print(f"Generating page from {content_md} using template {template_html} to {output_html}")
+    generate_pages_recursive(content_md, template_html, output_html)
+
+if __name__ == "__main__":
+    main()
