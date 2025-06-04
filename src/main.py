@@ -7,7 +7,7 @@ def main():
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     
     static_dir = os.path.join(BASE_DIR, "static")
-    output_dir = os.path.join(BASE_DIR, "docs")  # Changed from public to docs
+    output_dir = os.path.join(BASE_DIR, "docs")
     content_dir = os.path.join(BASE_DIR, "content")
     template_html = os.path.join(BASE_DIR, "template.html")
     
